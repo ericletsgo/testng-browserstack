@@ -1,0 +1,26 @@
+
+steps:
+
+- task: browserstackcom.browserstack-vsts-extension.browserstack-config-task.BrowserStackConfig@0
+
+  displayName: 'BrowserStack configuration setup'
+
+  inputs:
+
+    BrowserStackServiceEndPoint: BrowserStack
+
+ 
+
+- task: Maven@3
+
+  displayName: 'Maven pom.xml'
+
+  inputs:
+
+    goals: 'clean test -Pado'
+
+ 
+
+- task: browserstackcom.browserstack-vsts-extension.reports-task.BrowserStackResults@0
+
+  displayName: 'BrowserStack Results.'
